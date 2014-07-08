@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>   
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Minh Quy Blog - Blogging about stuffs which I learn</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+    <!-- This is for syntax highlight -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css">
+    <!-- Customisation  -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+
+</head>
+<body class="home-template">
+
+    
+    <main class="content" role="main">
+
+    <article class="post">
+        <header class="post-header">
+            <a id="blog-logo" href="/">
+                
+                <span class="blog-title">Js Quiz</span>
+            </a>
+        </header>
+
+        <span class="post-meta">
+        	<time datetime="2014-06-26">26 Jun 2014</time>
+        	
+        		on
+	        	
+	        
+       	</span>
+
+        <section class="post-content">
+            <p>After reading js quiz from <a href="https://twitter.com/kangax">kangax</a>, <a href="https://twitter.com/DmitrySoshnikov">Dmitry Soshnikov</a>, I think it is better if collecting some great js quizzes. There are also some quizzes created myself, I realize when program.</p>
+
+<p><strong>Few notes about code</strong></p>
+
+<ul>
+<li>Assuming ECMAScript 5th edition</li>
+<li>Every snippet is run as a global code</li>
+<li>There are no other variables declared</li>
+</ul>
+
+<p><br/></p>
+
+<p><strong>1.</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="k">return</span> <span class="k">typeof</span> <span class="nx">arguments</span><span class="p">;</span>
+<span class="p">})();</span>
+</code></pre></div>
+<p><strong>2.</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">f</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">g</span><span class="p">(){</span> <span class="k">return</span> <span class="mi">23</span><span class="p">;</span> <span class="p">};</span>
+<span class="k">typeof</span> <span class="nx">g</span><span class="p">();</span>
+</code></pre></div>
+<p><strong>3.</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">){</span>
+  <span class="k">delete</span> <span class="nx">x</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">x</span><span class="p">;</span>
+<span class="p">})(</span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>4. What&#39;s the value of x?</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">y</span> <span class="o">=</span> <span class="k">typeof</span> <span class="nx">x</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>5.</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span> <span class="nx">f</span><span class="p">(</span><span class="nx">f</span><span class="p">){</span>
+  <span class="k">return</span> <span class="k">typeof</span> <span class="nx">f</span><span class="p">();</span>
+<span class="p">})(</span><span class="kd">function</span><span class="p">(){</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span> <span class="p">});</span>
+</code></pre></div>
+<p><strong>6.</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">f</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="nx">f</span><span class="p">(){</span> <span class="k">return</span> <span class="s2">&quot;1&quot;</span><span class="p">;</span> <span class="p">},</span> <span class="kd">function</span> <span class="nx">g</span><span class="p">(){</span> <span class="k">return</span> <span class="mi">2</span><span class="p">;</span> <span class="p">})();</span>
+<span class="k">typeof</span> <span class="nx">f</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>7. What&#39;s the value of x?</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="kd">function</span> <span class="nx">f</span><span class="p">(){})</span> <span class="p">{</span>
+  <span class="nx">x</span> <span class="o">+=</span> <span class="k">typeof</span> <span class="nx">f</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>8.</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="p">[</span><span class="k">typeof</span> <span class="nx">x</span><span class="p">,</span> <span class="k">typeof</span> <span class="nx">y</span><span class="p">][</span><span class="mi">1</span><span class="p">];</span>
+<span class="k">typeof</span> <span class="k">typeof</span> <span class="nx">x</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>9.</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span> <span class="nx">f</span><span class="p">(){</span>
+  <span class="kd">function</span> <span class="nx">f</span><span class="p">(){</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">f</span><span class="p">();</span>
+  <span class="kd">function</span> <span class="nx">f</span><span class="p">(){</span> <span class="k">return</span> <span class="mi">2</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">})();</span>
+</code></pre></div>
+<p><strong>10.</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">f</span><span class="p">(){</span> <span class="k">return</span> <span class="nx">f</span><span class="p">;</span> <span class="p">}</span>
+<span class="k">new</span> <span class="nx">f</span><span class="p">()</span> <span class="k">instanceof</span> <span class="nx">f</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>11.</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">alert</span><span class="p">(</span><span class="nx">foo</span> <span class="o">===</span> <span class="nx">foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span><span class="p">);</span> <span class="c1">// true</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">foo</span><span class="p">()</span> <span class="o">===</span> <span class="nx">foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span><span class="p">());</span> <span class="c1">// ?</span>
+</code></pre></div>
+<p><strong>12. What will alert display?</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="nx">a</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">n</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span><span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="p">)},</span>
+  <span class="nx">b</span><span class="o">:</span> <span class="mi">1</span>
+<span class="p">};</span>
+<span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">m</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">n</span><span class="p">)()</span> <span class="c1">// ?</span>
+</code></pre></div>
+<p><strong>13.</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="nb">parseInt</span><span class="p">(</span><span class="s2">&quot;12.5&quot;</span><span class="p">)</span> <span class="o">===</span> <span class="o">~~</span><span class="s2">&quot;12.5&quot;</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>14.</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="mi">100</span><span class="p">[</span><span class="s1">&#39;toString&#39;</span><span class="p">][</span><span class="s1">&#39;length&#39;</span><span class="p">]</span>
+</code></pre></div>
+<p><strong>15. What&#39;s the value of a?</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="s2">&quot;a&quot;</span> <span class="k">in</span> <span class="nb">window</span><span class="p">))</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>16. What&#39;s the value of a?</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">a</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">a</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>17.</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">a</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">a</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>18.</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="k">typeof</span> <span class="k">typeof</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>19. Are they completely equvalent?</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="k">typeof</span> <span class="nx">foo</span> <span class="o">==</span> <span class="s1">&#39;undefined&#39;</span> <span class="nx">vs</span> <span class="k">typeof</span> <span class="nx">foo</span> <span class="o">===</span> <span class="s1">&#39;undefined&#39;</span>
+</code></pre></div>
+<p><strong>20. What&#39;s the value of a?</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
+</code></pre></div>
+<p><strong>21. What&#39;s the result of below expression?</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">x</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
+  <span class="nx">bar</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">x</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+  <span class="nx">foo</span><span class="p">.</span><span class="nx">bar</span><span class="p">(),</span>
+  <span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">bar</span><span class="p">)(),</span>
+  <span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">bar</span> <span class="o">=</span> <span class="nx">foo</span><span class="p">.</span><span class="nx">bar</span><span class="p">)(),</span>
+  <span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">bar</span><span class="p">,</span> <span class="nx">foo</span><span class="p">.</span><span class="nx">bar</span><span class="p">)()</span>
+<span class="p">);</span>
+</code></pre></div>
+<p><strong>22.</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">f</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arguments</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">arguments</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="nx">f</span><span class="p">();</span>
+</code></pre></div>
+<p><strong>23.</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">b</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">arguments</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">b</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>24.</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span>
+<span class="nx">b</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+<span class="nx">c</span> <span class="o">=</span> <span class="p">(</span>
+  <span class="mi">20</span><span class="p">,</span>
+  <span class="kd">function</span> <span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="mi">100</span><span class="p">},</span>
+  <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">arguments</span><span class="p">[</span><span class="mi">0</span><span class="p">]}</span>
+<span class="p">);</span>
+
+<span class="nx">a</span> <span class="o">=</span> <span class="nx">b</span> <span class="o">+</span> <span class="nx">c</span>
+<span class="p">({</span><span class="nx">x</span><span class="o">:</span> <span class="mi">10</span><span class="p">}).</span><span class="nx">x</span>
+</code></pre></div>
+<p><strong>25.</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;bar&quot;</span><span class="p">);</span>
+<span class="p">})</span>
+
+<span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">);</span>
+<span class="p">}());</span>
+</code></pre></div>
+<p><strong>26.</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s1">&#39;first&#39;</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">else</span> <span class="p">{</span>
+  <span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s1">&#39;second&#39;</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">foo</span><span class="p">();</span>
+</code></pre></div>
+<p><strong>27</strong></p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;file.js&quot;</span><span class="o">&gt;</span><span class="nx">alert</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="o">&lt;</span><span class="err">/script&gt;</span>
+</code></pre></div>
+        </section>
+
+        
+
+        <footer class="post-footer">
+        	<!-- If we want to display author's name and bio -->
+            
+                <section class="author">
+                	<header> <a href="/"> <img class="profile" src="/assets/images/profile.jpg" alt="Author's profile picture"></a></header>
+                	<article>
+                		<!-- Author Name -->
+                    	<h4> MQuy </h4>
+                    	<!-- Author Bio -->
+                    	<p>
+                    		Hey, I'm Ruby on Rails Developer, interest in stuffs like JS, C++
+                    	</p>
+                    </article>
+                </section>
+            
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=Js Quiz&amp;url=http://mquy.github.io//2014/06/26/js-quiz.html"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://mquy.github.io//2014/06/26/js-quiz.html"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://mquy.github.io//2014/06/26/js-quiz.html"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+            
+            <br/>
+            <section class="disqus">
+            	<div id="disqus_thread"></div>
+            	<script type="text/javascript">
+
+            	    var disqus_shortname = 'mquy';
+            		var disqus_developer = 0; // developer mode is on
+            	    (function() {
+            	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            	        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            	    })();
+            	</script>
+            	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            	<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </section>
+            
+
+        </footer>
+
+    </article>
+
+</main>
+
+
+    <footer class="site-footer">
+        <a class="subscribe icon-feed" href="/rss.xml"><span class="tooltip">Subscribe!</span></a>
+        <div class="inner">
+             <section class="copyright">All content copyright <a href="/">Minh Quy Blog</a> &copy;  &bull; All rights reserved.</section>
+             <section class="poweredby">Made with Jekyll using <a href="http://github.com/rosario/kasper">Kasper theme</a></section>
+        </div>
+    </footer>
+
+    
+    <script type="text/javascript" src="/assets/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Google Analytics Tracking code -->
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>   
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>   
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Minh Quy Blog - Blogging about stuffs which I learn</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+    <!-- This is for syntax highlight -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css">
+    <!-- Customisation  -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+
+</head>
+<body class="home-template">
+
+    
+    <main class="content" role="main">
+
+    <article class="post">
+        <header class="post-header">
+            <a id="blog-logo" href="/">
+                
+                <span class="blog-title">Js for Interview Question</span>
+            </a>
+        </header>
+
+        <span class="post-meta">
+        	<time datetime="2014-07-07">07 Jul 2014</time>
+        	
+        		on
+	        	
+	        
+       	</span>
+
+        <section class="post-content">
+            <p><strong>1.</strong> Define such a, that expression would resolve to true</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="p">(</span><span class="nx">a</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">a</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">a</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<div><spoiler>
+<strong>Method 1:</strong>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">i</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="nx">valueOf</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">i</span><span class="o">++</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<strong>Method 2:</strong>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">global</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span><span class="nx">global</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">get</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">value</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">)</span>
+</code></pre></div>
+<small>What&#39;s different between two define?</small><br/></spoiler></div>
+
+<p><strong>2.</strong> What&#39;s the different between EMACScript and Javascript?</p>
+
+<div><spoiler>
+</spoiler></div>
+
+<p><strong>3.</strong> Why does nearly every object have a toString method?</p>
+
+<div><spoiler>
+</spoiler></div>
+
+<p><strong>4.</strong> Do you know which interpreter Mozilla Firefox uses? Or any other of the browsers?</p>
+
+<div><spoiler>
+</spoiler></div>
+
+<p><strong>5.</strong> Is there block scope in JavaScript?</p>
+
+<div><spoiler>
+</spoiler></div>
+
+<p><strong>6.</strong> Can you explain how Ajax/XMLHttpRequest works?</p>
+
+<div><spoiler>
+</spoiler></div>
+
+<p><strong>7.</strong> What is JSON?</p>
+
+<div><spoiler>
+</spoiler></div>
+
+<p><strong>8.</strong> An example of a singleton pattern?</p>
+
+<div><spoiler>
+</spoiler></div>
+
+<p><strong>9.</strong> What&#39;s the difference between <code>undefined</code> and <code>undeclared</code>?</p>
+
+<div><spoiler>
+</spoiler></div>
+
+<p><strong>10.</strong> Are you familiar with <code>Web Workers</code>?</p>
+
+<div><spoiler>
+</spoiler></div>
+
+<p><strong>11</strong> The standard <code>addEventListener</code> is supported in which browsers?</p>
+
+<div><spoiler>
+</spoiler></div>
+
+<p><strong>12.</strong> What is the difference between <code>==</code> and <code>===</code>? Which one would you use?</p>
+
+<div><spoiler>
+</spoiler></div>
+
+<p><strong>13.</strong>  what is the difference between <code>var x = 1</code> and <code>x = 1</code>? Answer in as much or as little detail as you feel comfortable</p>
+
+<div><spoiler>
+</spoiler></div>
+
+<p><strong>14.</strong> Difference between Classic Inheritance and Prototypical Inheritance</p>
+
+<div><spoiler>
+</spoiler></div>
+
+<p><strong>15.</strong> What is difference between private variable, public variable and static variable? How we achieve this in JS?</p>
+
+<div><spoiler>
+</spoiler></div>
+
+<p><strong>16.</strong> How to achieve inheritance? Compare ways of inheritance. What are the downsides?</p>
+
+<div><spoiler>
+</spoiler></div>
+
+<p><strong>17.</strong> Why extending array is bad idea?</p>
+
+<div><spoiler>
+</spoiler></div>
+
+<p><strong>18.</strong> Explain how to prototypal inheritance works?</p>
+
+<div><spoiler>
+</spoiler></div>
+
+<p><strong>19.</strong> Explain function hoisting?</p>
+
+<div><spoiler>
+</spoiler></div>
+
+<p><strong>20.</strong> Explain event delegation (what&#39;s the difference between on and bind is in jQuery)?</p>
+
+<div><spoiler>
+</spoiler></div>
+
+<p><strong>21.</strong> What are promises?</p>
+
+<div><spoiler>
+</spoiler></div>
+
+<p><strong>22.</strong> what are some things you can do to improve page loading speed?</p>
+
+<div><spoiler>
+</spoiler></div>
+
+<p><strong>23.</strong> What is the significance of including <code>&#39;use strict&#39;</code> at the beginning of a JavaScript source file?</p>
+
+<div><spoiler>
+</spoiler></div>
+
+<p><strong>24.</strong> What&#39;s the different between function declaration and function expression</p>
+
+<div><spoiler>
+</spoiler></div>
+
+<p><strong>25.</strong> How would you change the context of the function?</p>
+
+<div><spoiler>
+</spoiler></div>
+
+<p><strong>26.</strong> About <code>typeof</code> and <code>instanceOf</code> operators, <code>constructor</code> property?</p>
+
+<div><spoiler>
+</spoiler></div>
+
+<p><strong>27.</strong> List every way the browser (using HTML, JS or CSS) can communicate with the server?</p>
+
+<div><spoiler>
+</spoiler></div>
+
+        </section>
+
+        
+
+        <footer class="post-footer">
+        	<!-- If we want to display author's name and bio -->
+            
+                <section class="author">
+                	<header> <a href="/"> <img class="profile" src="/assets/images/profile.jpg" alt="Author's profile picture"></a></header>
+                	<article>
+                		<!-- Author Name -->
+                    	<h4> MQuy </h4>
+                    	<!-- Author Bio -->
+                    	<p>
+                    		Hey, I'm Ruby on Rails Developer, interest in stuffs like JS, C++
+                    	</p>
+                    </article>
+                </section>
+            
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=Js for Interview Question&amp;url=http://mquy.github.io//2014/07/07/js-question.html"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://mquy.github.io//2014/07/07/js-question.html"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://mquy.github.io//2014/07/07/js-question.html"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+            
+            <br/>
+            <section class="disqus">
+            	<div id="disqus_thread"></div>
+            	<script type="text/javascript">
+
+            	    var disqus_shortname = 'mquy';
+            		var disqus_developer = 0; // developer mode is on
+            	    (function() {
+            	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            	        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            	    })();
+            	</script>
+            	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            	<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </section>
+            
+
+        </footer>
+
+    </article>
+
+</main>
+
+
+    <footer class="site-footer">
+        <a class="subscribe icon-feed" href="/rss.xml"><span class="tooltip">Subscribe!</span></a>
+        <div class="inner">
+             <section class="copyright">All content copyright <a href="/">Minh Quy Blog</a> &copy;  &bull; All rights reserved.</section>
+             <section class="poweredby">Made with Jekyll using <a href="http://github.com/rosario/kasper">Kasper theme</a></section>
+        </div>
+    </footer>
+
+    
+    <script type="text/javascript" src="/assets/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Google Analytics Tracking code -->
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>   
+</body>
+</html>

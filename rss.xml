@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+  xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Minh Quy Blog</title>
+    <link>http://mquy.github.io/</link>
+    <description>Blogging about stuffs which I learn</description>
+    <pubDate>Mon, 07 Jul 2014 00:00:00 +0700</pubDate>
+    <item>
+      <title>Js for Interview Question</title>
+      <link>http://mquy.github.io//2014/07/07/js-question.html</link>
+      <description>&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; Define such a, that expression would resolve to true&lt;/p&gt;
+</description>
+      <pubDate>Mon, 07 Jul 2014 00:00:00 +0700</pubDate>
+      <dc:date>2014-07-07T00:00:00+07:00</dc:date>
+    </item>
+    <item>
+      <title>ECMAScript Overview</title>
+      <link>http://mquy.github.io//2014/06/29/ECMAScript-overview.html</link>
+      <description>&lt;h5&gt;ECMAScript&lt;/h5&gt;
+
+&lt;p&gt;ECMAScript is an object-oriented programming language for performing computations and manipulating objects within a host environment(normally web browser).&lt;/p&gt;
+</description>
+      <pubDate>Sun, 29 Jun 2014 00:00:00 +0700</pubDate>
+      <dc:date>2014-06-29T00:00:00+07:00</dc:date>
+    </item>
+    <item>
+      <title>Js Quiz</title>
+      <link>http://mquy.github.io//2014/06/26/js-quiz.html</link>
+      <description>&lt;p&gt;After reading js quiz from &lt;a href=&quot;https://twitter.com/kangax&quot;&gt;kangax&lt;/a&gt;, &lt;a href=&quot;https://twitter.com/DmitrySoshnikov&quot;&gt;Dmitry Soshnikov&lt;/a&gt;, I think it is better if collecting some great js quizzes. There are also some quizzes created myself, I realize when program.&lt;/p&gt;
+</description>
+      <pubDate>Thu, 26 Jun 2014 00:00:00 +0700</pubDate>
+      <dc:date>2014-06-26T00:00:00+07:00</dc:date>
+    </item>
+    <dc:date>2014-07-07T00:00:00+07:00</dc:date>
+  </channel>
+</rss>

@@ -64,21 +64,59 @@
   <span class="p">});</span>
 <span class="p">})(</span><span class="nb">window</span><span class="p">)</span>
 </code></pre></div>
-<small>What&#39;s different between two define?</small><br/></spoiler></div>
+What&#39;s different between two define?
+
+<ul>
+<li><code>a</code> in Method 1 is Object&#39;s type instead of Integer&#39;s type of Method 2. It leads above expression is only equal in term of value.</li>
+<li><code>a</code> in Method 2 can not be changed or listed differ to in Method 1.</li>
+<li>There&#39;s no way to modify value of <code>a</code> in Method 2.</li>
+</ul>
+
+Object in Javascript can be converted to primitives in three context:
+
+<ul>
+<li>Numberic <code>toString</code>: happens when a <em>string representation</em> of an object is required.</li>
+<li>String <code>valueOf</code>: performs two cases
+
+<ul>
+<li>In function which need a number, for example <code>Math.sin(obj)</code>, <code>isNaN(obj)</code> or <code>+obj</code>.</li>
+<li>In comparison like <code>==</code> but not for <code>===</code></li>
+</ul></li>
+<li>Boolean.</li>
+</ul>
+
+Both String conversion and Number conversion try to convert into it&#39;s type firstly, but if not success(not define) they will try the other one.
+</spoiler></div>
 
 <p><strong>2.</strong> What&#39;s the different between EMACScript and Javascript?</p>
 
 <div><spoiler>
+
+<ul>
+<li>EMACScript is an object-oriented programming language for performing computations and manipulating objects within a host environment.</li>
+<li>Javascript is one of well-known EMACScript&#39;s implementations.</li>
+</ul>
+
 </spoiler></div>
 
 <p><strong>3.</strong> Why does nearly every object have a toString method?</p>
 
 <div><spoiler>
+When object was to be represented as a text value, it need to be converted into String type and <code>toString</code> will be called automatically.<br/>The default <code>toString</code> function will return <code>[object type]</code>.<br/>Common way to use is to detect object class
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">toString</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span><span class="p">;</span>
+
+<span class="nx">toString</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">new</span> <span class="nb">String</span><span class="p">)</span> <span class="c1">// [object String]</span>
+<span class="nx">toString</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="kc">undefined</span><span class="p">)</span> <span class="c1">// [object Undefined]</span>
+</code></pre></div>
 </spoiler></div>
 
 <p><strong>4.</strong> Do you know which interpreter Mozilla Firefox uses? Or any other of the browsers?</p>
 
 <div><spoiler>
++ Mozilla Firefox: SpiderMonkey
++ Chrome: V8
++ Safari: Nitro
++ Internet Explorer: Chakra<br/>You need to understand the different between javascript engine and render engine
 </spoiler></div>
 
 <p><strong>5.</strong> Is there block scope in JavaScript?</p>
@@ -119,6 +157,14 @@
 <p><strong>12.</strong> What is the difference between <code>==</code> and <code>===</code>? Which one would you use?</p>
 
 <div><spoiler>
+When type conversion is involved in comparsion(ie. non-strict mode) Javascript converts <code>String</code>, <code>Number</code>, <code>Boolean</code> or <code>Object</code> operands as follows:
+
+<ul>
+<li><code>Number</code> vs <code>String</code>: try to convert string numeric literal to <code>Number</code></li>
+<li>one of the operands is <code>Boolean</code>, the Boolean operand is converted to 1 or 0</li>
+<li><code>Object</code> vs <code>Number</code> / <code>String</code>: Object operand is converted to primitive value(if, and only if its comparand is a primitive), a String or a Number, using the valueOf and toString methods</li>
+</ul>
+
 </spoiler></div>
 
 <p><strong>13.</strong>  what is the difference between <code>var x = 1</code> and <code>x = 1</code>? Answer in as much or as little detail as you feel comfortable</p>
@@ -192,6 +238,11 @@
 </spoiler></div>
 
 <p><strong>27.</strong> List every way the browser (using HTML, JS or CSS) can communicate with the server?</p>
+
+<div><spoiler>
+</spoiler></div>
+
+<p><strong>28.</strong> Using object as key?</p>
 
 <div><spoiler>
 </spoiler></div>

@@ -94,7 +94,7 @@ Both String conversion and Number conversion try to convert into it&#39;s type f
 
 <ul>
 <li>EMACScript is an object-oriented programming language for performing computations and manipulating objects within a host environment.</li>
-<li>Javascript is one of well-known EMACScript&#39;s implementations.</li>
+<li>Javascript is one of well-known EMACScript&#39;s dialect.</li>
 </ul>
 
 </spoiler></div>
@@ -113,35 +113,76 @@ When object was to be represented as a text value, it need to be converted into 
 <p><strong>4.</strong> Do you know which interpreter Mozilla Firefox uses? Or any other of the browsers?</p>
 
 <div><spoiler>
-+ Mozilla Firefox: SpiderMonkey
-+ Chrome: V8
-+ Safari: Nitro
-+ Internet Explorer: Chakra<br/>You need to understand the different between javascript engine and render engine
+
+<ul>
+<li>Mozilla Firefox: SpiderMonkey</li>
+<li>Chrome: V8</li>
+<li>Safari: Nitro</li>
+<li>Internet Explorer: Chakra</li>
+</ul>
+
+You need to understand the different between javascript engine and layout engine
 </spoiler></div>
 
 <p><strong>5.</strong> Is there block scope in JavaScript?</p>
 
 <div><spoiler>
+There&#39;s no block scope in javascript. Only declarations(variable and function) which you define in block will be hoisted (equivalent to movie to the top of the function or global code) because they are processed before any code is executed.<br/>For that reason, it is recommended to always declare variables at the top of their scope (the top of global code or function code) and declares functions at the bottom of their one.
 </spoiler></div>
 
 <p><strong>6.</strong> Can you explain how Ajax/XMLHttpRequest works?</p>
 
 <div><spoiler>
-</spoiler></div>
+Ajax stands for Asynchronous Javascript and XML, it&#39;s approach to using a number of existing technologies together, including: <a href="https://developer.mozilla.org/en-US/docs/HTML">HTML</a> or <a href="https://developer.mozilla.org/en-US/docs/XHTML">XHTML</a>, <a href="https://developer.mozilla.org/en-US/docs/CSS">CSS</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript">Javascript</a>, <a href="https://developer.mozilla.org/en-US/docs/DOM">DOM</a>, <a href="https://developer.mozilla.org/en-US/docs/XML">XML</a>, <a href="https://developer.mozilla.org/en-US/docs/XSLT">XSLT</a> and most importantly the <a href="https://developer.mozilla.org/en-US/docs/DOM/XMLHttpRequest">XMLHttpRequest</a> object to communicate with server-side scripts.<br/>This picture below will describe how it works<br/><img src="/assets/images/ajax-fig1_small.png" alt=""><br/>The different between ajax and classic web<br/><img src="/assets/images/ajax-fig2_small.png" alt=""><br/></spoiler></div>
 
 <p><strong>7.</strong> What is JSON?</p>
 
 <div><spoiler>
+JSON is a syntax for serializing objects, arrays, numbers, strings, booleans and null.<br/>JSON object contains methods for parsing <a href="http://json.org/">Javascript Object Notation</a> and converting values to JSON. It can&#39;t be called or constructed and aside from its method properties(<code>JSON.parse()</code> and <code>JSON.stringify()</code>) it has no interesting functionality of its own.<br/>JSON is not subset of javascript.
+In general, JSON spec says that <em>&quot;a string is a sequence of zero or more Unicode characters, wrapped in double quotes, using backslash escapes.&quot;</em> But in javascript <em>&quot;a string can contain anything as long as it&#39;s not a quote, a backslash or line terminator(\u000A, \u000D, \u2028, \u2029)&quot;</em>, therefore two invisible Unicode characters(U+2028, U+2029) are the resason.<br/>For example: <code>{&quot;JSON&quot;:&quot;ro cks!&quot;}</code>
 </spoiler></div>
 
 <p><strong>8.</strong> An example of a singleton pattern?</p>
 
 <div><spoiler>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">global</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">instance</span><span class="p">;</span>
+
+  <span class="kd">function</span> <span class="nx">Singleton</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">instance</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">instance</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">instance</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="nx">global</span><span class="p">.</span><span class="nx">Singleton</span> <span class="o">=</span> <span class="nx">Singleton</span><span class="p">;</span>
+<span class="p">})(</span><span class="k">this</span><span class="p">);</span>
+
+<span class="k">new</span> <span class="nx">Singleton</span><span class="p">()</span> <span class="o">===</span> <span class="k">new</span> <span class="nx">Singleton</span><span class="p">()</span>
+</code></pre></div>
 </spoiler></div>
 
 <p><strong>9.</strong> What&#39;s the difference between <code>undefined</code> and <code>undeclared</code>?</p>
 
 <div><spoiler>
+<code>undefined</code> is the one of built-in types. it has a mean that the variable was declared but not initialized. There are three ways to achive &#39;undefined&#39;:
+
+<ul>
+<li>declare variable</li>
+<li>access not existing property of object</li>
+<li>set variable to undefined</li>
+</ul>
+
+<code>undeclared</code> means that the variable wasn&#39;t declared in chaining scope.<br/>declared vs undeclared variables also have mean like that
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">declared</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">// explicit</span>
+<span class="nx">undeclared</span> <span class="o">=</span> <span class="mi">1</span>
+</code></pre></div>
+Declared variables are a non-configurable property of their execution context(function or global). Undeclared variables are configurable
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="k">delete</span> <span class="nx">declared</span> <span class="c1">// =&gt; true</span>
+<span class="k">delete</span> <span class="nx">undeclared</span> <span class="c1">// =&gt; false</span>
+</code></pre></div>
+<code>delete</code> only work for properties which belong to that object.
 </spoiler></div>
 
 <p><strong>10.</strong> Are you familiar with <code>Web Workers</code>?</p>
@@ -230,11 +271,18 @@ When type conversion is involved in comparsion(ie. non-strict mode) Javascript c
 <p><strong>25.</strong> How would you change the context of the function?</p>
 
 <div><spoiler>
-</spoiler></div>
+Ex: new XXX()
+There&#39;re 4 steps happened when <code>new</code> was called:
 
-<p><strong>26.</strong> About <code>typeof</code> and <code>instanceOf</code> operators, <code>constructor</code> property?</p>
+<ul>
+<li>It creates new object.</li>
+<li>It sets the constructor to object XXX.</li>
+<li>It sets up object to delegate to XXX.prototype.</li>
+<li>It call XXX() in the context of new object.
+[/spoiler]</li>
+</ul>
 
-<div><spoiler>
+<strong>26.</strong> About <code>typeof</code> and <code>instanceOf</code> operators, <code>constructor</code> property?<br/>[spoiler]
 </spoiler></div>
 
 <p><strong>27.</strong> List every way the browser (using HTML, JS or CSS) can communicate with the server?</p>

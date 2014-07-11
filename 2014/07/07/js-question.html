@@ -171,18 +171,12 @@ In general, JSON spec says that <em>&quot;a string is a sequence of zero or more
 <ul>
 <li>declare variable</li>
 <li>access not existing property of object</li>
-<li>set variable to undefined</li>
 </ul>
 
 <code>undeclared</code> means that the variable wasn&#39;t declared in chaining scope.<br/>declared vs undeclared variables also have mean like that
 <div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">declared</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">// explicit</span>
 <span class="nx">undeclared</span> <span class="o">=</span> <span class="mi">1</span>
 </code></pre></div>
-Declared variables are a non-configurable property of their execution context(function or global). Undeclared variables are configurable
-<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="k">delete</span> <span class="nx">declared</span> <span class="c1">// =&gt; true</span>
-<span class="k">delete</span> <span class="nx">undeclared</span> <span class="c1">// =&gt; false</span>
-</code></pre></div>
-<code>delete</code> only work for properties which belong to that object.
 </spoiler></div>
 
 <p><strong>10.</strong> Are you familiar with <code>Web Workers</code>?</p>
@@ -198,7 +192,7 @@ Declared variables are a non-configurable property of their execution context(fu
 <p><strong>12.</strong> What is the difference between <code>==</code> and <code>===</code>? Which one would you use?</p>
 
 <div><spoiler>
-When type conversion is involved in comparsion(ie. non-strict mode) Javascript converts <code>String</code>, <code>Number</code>, <code>Boolean</code> or <code>Object</code> operands as follows:
+Main difference is that <code>==</code> compares only value while <code>===</code> compares value and type.<br/>The operand <code>==</code> leads to type conversion, when type conversion is involved in comparsion(ie. non-strict mode) Javascript converts <code>String</code>, <code>Number</code>, <code>Boolean</code> or <code>Object</code> operands as follows:
 
 <ul>
 <li><code>Number</code> vs <code>String</code>: try to convert string numeric literal to <code>Number</code></li>
@@ -206,11 +200,58 @@ When type conversion is involved in comparsion(ie. non-strict mode) Javascript c
 <li><code>Object</code> vs <code>Number</code> / <code>String</code>: Object operand is converted to primitive value(if, and only if its comparand is a primitive), a String or a Number, using the valueOf and toString methods</li>
 </ul>
 
+<a href="http://www.ecma-international.org/ecma-262/5.1/#sec-11.9.1">More details</a>
 </spoiler></div>
 
 <p><strong>13.</strong>  what is the difference between <code>var x = 1</code> and <code>x = 1</code>? Answer in as much or as little detail as you feel comfortable</p>
 
 <div><spoiler>
+<code>var x = 1</code> is explicit declaration while <code>x = 1</code> is implicit declaration. It leads to
+
+<ul>
+<li>Scope inheritance in case 2:
+
+<ul>
+<li>if scope chain from execution context doen&#39;t declare(both explicit and implicit) variable x, <code>x</code> will declare and initialize on global with <code>configurable = true</code>.</li>
+<li>Otherwise <code>x</code> will reuse that declaration(in parent scope) and set value with <code>1</code>.</li>
+</ul></li>
+<li>In case 1:
+
+<ul>
+<li><code>var x</code> will be declare in <code>execution context</code> with option <code>configurable = false</code> and also be hoisted.</li>
+</ul></li>
+</ul>
+
+&#x270D; Everytime a function is called, a new execution context is created. Js interpreter calls with 2 stages:
+
+<ul>
+<li>Creation Stage: create the <code>scope chain</code>, create <code>variable object</code> and determine the value of <code>this</code>. Create <code>variable object</code> will lead:
+
+<ul>
+<li>Create <code>arguments object</code>, check the context for parameters, initialize the name and value and create a reference copy.</li>
+<li>Scan the context for function declarations:
+
+<ul>
+<li>For each function found, create a property in <code>variable object</code> which has a reference pointer to the function in memory.</li>
+<li>If function name exists, the reference pointer value will be overwritten.</li>
+</ul></li>
+<li>Scan the context for variable declarations:
+
+<ul>
+<li>For each one found, create a property in <code>variable object</code> and initialize the value as <code>undefined</code>.</li>
+<li>If variable name already exists in the <code>variable object</code>, do nothing and continue scanning.</li>
+</ul></li>
+</ul></li>
+<li>Activation / Code Execution Stage: Assign values, references to functions and execute code.</li>
+</ul>
+
+You can think like that
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="nx">executionContextObj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">scopeChain</span><span class="o">:</span> <span class="p">{</span> <span class="cm">/* variableObject + all parent execution context&#39;s variableObject */</span> <span class="p">},</span>
+    <span class="nx">variableObject</span><span class="o">:</span> <span class="p">{</span> <span class="cm">/* function arguments / parameters, inner variable and function declarations */</span> <span class="p">},</span>
+    <span class="k">this</span><span class="o">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div>
 </spoiler></div>
 
 <p><strong>14.</strong> Difference between Classic Inheritance and Prototypical Inheritance</p>

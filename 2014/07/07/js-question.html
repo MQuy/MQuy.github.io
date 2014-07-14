@@ -138,7 +138,7 @@ Ajax stands for Asynchronous Javascript and XML, it&#39;s approach to using a nu
 <p><strong>7.</strong> What is JSON?</p>
 
 <div><spoiler>
-JSON is a syntax for serializing objects, arrays, numbers, strings, booleans and null.<br/>JSON object contains methods for parsing <a href="http://json.org/">Javascript Object Notation</a> and converting values to JSON. It can&#39;t be called or constructed and aside from its method properties(<code>JSON.parse()</code> and <code>JSON.stringify()</code>) it has no interesting functionality of its own.<br/>JSON is not subset of javascript.
+JSON is a syntax for serializing objects, arrays, numbers, strings, booleans and null.<br/>JSON object contains methods for parsing <a href="http://json.org/">Javascript Object Notation</a> and converting values to JSON. It can&#39;t be called or constructed and aside from its method properties(<code>JSON.parse()</code> and <code>JSON.stringify()</code>) it has no interesting functionality of its own.<br/>&#x270D; JSON is not subset of javascript.
 In general, JSON spec says that <em>&quot;a string is a sequence of zero or more Unicode characters, wrapped in double quotes, using backslash escapes.&quot;</em> But in javascript <em>&quot;a string can contain anything as long as it&#39;s not a quote, a backslash or line terminator(\u000A, \u000D, \u2028, \u2029)&quot;</em>, therefore two invisible Unicode characters(U+2028, U+2029) are the resason.<br/>For example: <code>{&quot;JSON&quot;:&quot;ro cks!&quot;}</code>
 </spoiler></div>
 
@@ -254,9 +254,28 @@ You can think like that
 </code></pre></div>
 </spoiler></div>
 
-<p><strong>14.</strong> Difference between Classic Inheritance and Prototypical Inheritance</p>
+<p><strong>14.</strong> Difference between Classic Inheritance and Prototypal Inheritance</p>
 
 <div><spoiler>
+In a nutshell, prototypal inheritance is when an object inherits(*) from another object. This is differ from classical inheritance, in which a class inherits from another class.
+
+<table><thead>
+<tr>
+<th>Classical Inheritance</th>
+<th>Prototypal Inheritance</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>classes typically define the structure of objects</td>
+<td>the objects themeselves define their own structure and this one can be inherited and modified by other object at the runtime</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+(*): Using the word &quot;inherit&quot; in there means that it&#39;s not really inherit, it&#39;s something like delegate through the internal property [[Prototype]]. Shortly, object A &quot;inherits&quot; from object B, when you ask for a property or a method on an object, if it&#39;s not there, the internal [[Get]] lookup operation will traverse the [[Prototype]] chain not like in classical language, a copy-operation where behavior from the &quot;parent&quot; is duplicated into the &quot;child&quot;.
 </spoiler></div>
 
 <p><strong>15.</strong> What is difference between private variable, public variable and static variable? How we achieve this in JS?</p>
@@ -302,6 +321,15 @@ You can think like that
 <p><strong>23.</strong> What is the significance of including <code>&#39;use strict&#39;</code> at the beginning of a JavaScript source file?</p>
 
 <div><spoiler>
+There&#39;re some reasons why people use strict mode:
+
+<ul>
+<li>security.</li>
+<li>to avoid what they consider to error-prone features.</li>
+<li>to get enhanced in error checking(means it will throw exceptions in situations that are not specified as errors in non-strict mode).</li>
+<li>other reasons of their choosing.</li>
+</ul>
+
 </spoiler></div>
 
 <p><strong>24.</strong> What&#39;s the different between function declaration and function expression</p>
@@ -319,22 +347,37 @@ There&#39;re 4 steps happened when <code>new</code> was called:
 <li>It creates new object.</li>
 <li>It sets the constructor to object XXX.</li>
 <li>It sets up object to delegate to XXX.prototype.</li>
-<li>It call XXX() in the context of new object.
-[/spoiler]</li>
+<li>It call XXX() in the context of new object.</li>
 </ul>
 
-<strong>26.</strong> About <code>typeof</code> and <code>instanceOf</code> operators, <code>constructor</code> property?<br/>[spoiler]
+</spoiler></div>
+
+<p><strong>26.</strong> About <code>typeof</code> and <code>instanceOf</code> operators, <code>constructor</code> property?</p>
+
+<div><spoiler>
 </spoiler></div>
 
 <p><strong>27.</strong> List every way the browser (using HTML, JS or CSS) can communicate with the server?</p>
 
 <div><spoiler>
+There&#39;re four common ways to communiate with the server:
+
+<ul>
+<li>Ajax</li>
+<li>Tag: Iframe, Embed, Object, Video, Audio, Image.</li>
+<li>Script tag injection</li>
+<li>Websocket</li>
+</ul>
+
 </spoiler></div>
 
 <p><strong>28.</strong> Using object as key?</p>
 
 <div><spoiler>
+A key in object can be only <code>string</code>, therefore if object is used as key, object will be converted to <code>string</code> type via <code>toString</code> method
 </spoiler></div>
+
+<p>&#x270D; There&#39;re the definition I copy from Internet.</p>
 
         </section>
 

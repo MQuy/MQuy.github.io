@@ -254,7 +254,7 @@ You can think like that
 </code></pre></div>
 </spoiler></div>
 
-<p><strong>14.</strong> Difference between Classic Inheritance and Prototypal Inheritance</p>
+<p><strong>14.</strong> Difference between Classical Inheritance and Prototypal Inheritance</p>
 
 <div><spoiler>
 In a nutshell, prototypal inheritance is when an object inherits(*) from another object. This is differ from classical inheritance, in which a class inherits from another class.
@@ -266,11 +266,19 @@ In a nutshell, prototypal inheritance is when an object inherits(*) from another
 </tr>
 </thead><tbody>
 <tr>
-<td>classes typically define the structure of objects</td>
-<td>the objects themeselves define their own structure and this one can be inherited and modified by other object at the runtime</td>
+<td>Classes typically define the structure of objects</td>
+<td>The objects themeselves define their own structure and this one can be inherited and modified by other object at the runtime</td>
 </tr>
 <tr>
-<td></td>
+<td>It is static, means that after defining you can&#39;t modify its behavior at runtime</td>
+<td>It is dynamic, you can add new properties to prototypes after they are created, this allows you to add new methods to a prototype which will be automatically made available to all the objects which delegate to that prototype</td>
+</tr>
+<tr>
+<td>It&#39;s quite complicate, containing many aspect like abstraction, encapsulation, inheritance and polymorphism therefore it provides some stuffs for you to easily achive OOP, also looks more naturally</td>
+<td>It&#39;s simple, most of OOP aspect you need to implement to achive that</td>
+</tr>
+<tr>
+<td>Tight coupling, the gorilla / banna problem</td>
 <td></td>
 </tr>
 </tbody></table>
@@ -311,11 +319,58 @@ In a nutshell, prototypal inheritance is when an object inherits(*) from another
 <p><strong>21.</strong> What are promises?</p>
 
 <div><spoiler>
+
+<ul>
+<li>Promises: describe an object that acts as a proxy for a result that is normally not finished.</li>
+<li>Callback: is simply a function you pass into another function so that function can call it at a later time.</li>
+</ul>
+
+There are many <a href="http://wiki.commonjs.org/wiki/Promises">Promises Proposals</a> but the the most popular one is <a href="http://wiki.commonjs.org/wiki/Promises/A">CommonJS Promises A</a>. The meat of it is entirely about specifying the behavior of a single function, <code>then</code>:
+
+<blockquote>
+<em>A promise is defined as an object that has a function as the value for the property then:</em>
+<br/>
+<br/>
+<code>then(fulfilledHandler, errorHandler, progressHandler)</code>
+<br/>
+<br/>
+<em>Adds a <code>fulfilledHandler</code>, <code>errorHandler</code>, and <code>progressHandler</code> to be called for completion of a promise. The <code>fulfilledHandler</code> is called when the promise is fulfilled. The <code>errorHandler</code> is called when a promise fails. The <code>progressHandler</code> is called for progress events. All arguments are optional and non-function values are ignored. The <code>progressHandler</code> is not only an optional argument, but progress events are purely optional. Promise implementors are not required to ever call a <code>progressHandler</code> (the <code>progressHandler</code> may be ignored), this parameter exists so that implementors may call it if they have progress events to report.</em><br/><em>This function should return a new promise that is fulfilled when the given <code>fulfilledHandler</code> or <code>errorHandler</code> callback is finished. This allows promise operations to be chained together. The value returned from the callback handler is the fulfillment value for the returned promise. If the callback throws an error, the returned promise will be moved to failed state.</em>
+</blockquote>
+
 </spoiler></div>
 
 <p><strong>22.</strong> what are some things you can do to improve page loading speed?</p>
 
 <div><spoiler>
+There&#39;re some ways to improve page loading:
+
+<ul>
+<li>Should dynamic load javascript and css to prevent blocking render in DOM.</li>
+<li>Minimize the number of http requests to server as little as possible
+
+<ul>
+<li>Combine multiple style sheets into one.</li>
+<li>Use css instead of images whenever possible.</li>
+<li>Reduce scripts and put them at the bottom of the page.</li>
+<li>Use image sprite.</li>
+</ul></li>
+<li>Reduce server response time(less then 200ms).</li>
+<li>Enable compression.</li>
+<li>Enable browser caching.</li>
+<li>Minify resources(html, css, javascript).</li>
+<li>Reduce the number of plugins you use on your site.</li>
+<li>Reduce redirects.</li>
+<li>Use a Content Delivery Network.</li>
+</ul>
+
+Tool to check performance:
+
+<ul>
+<li><a href="http://yslow.org/">Yslow</a></li>
+<li><a href="https://developers.google.com/speed/pagespeed/">Page Speed</a></li>
+<li><a href="http://tools.pingdom.com/fpt/">Pingdom</a></li>
+</ul>
+
 </spoiler></div>
 
 <p><strong>23.</strong> What is the significance of including <code>&#39;use strict&#39;</code> at the beginning of a JavaScript source file?</p>
@@ -335,11 +390,53 @@ There&#39;re some reasons why people use strict mode:
 <p><strong>24.</strong> What&#39;s the different between function declaration and function expression</p>
 
 <div><spoiler>
+The main difference is about hosting(in declaration not in expression).
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="nx">FunctionDeclaration</span> <span class="o">:</span>
+<span class="kd">function</span> <span class="nx">Identifier</span> <span class="p">(</span> <span class="nx">FormalParameterListopt</span> <span class="p">)</span> <span class="p">{</span> <span class="nx">FunctionBody</span> <span class="p">}</span>
+<span class="nx">FunctionExpression</span> <span class="o">:</span>
+<span class="kd">function</span> <span class="nx">Identifieropt</span> <span class="p">(</span> <span class="nx">FormalParameterListopt</span> <span class="p">)</span> <span class="p">{</span> <span class="nx">FunctionBody</span> <span class="p">}</span>
+</code></pre></div>
+<a href="http://kangax.github.io/nfe">Named function expression demystified</a><br/>There&#39;re four ways to define function
+
+<ol>
+<li>a function defined with the Function constructor assigned to the variable multiply
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">multiply</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Function</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;return x * y;&quot;</span><span class="p">);</span>
+</code></pre></div></li>
+<li>a function declaration of a function named multiply
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">multiply</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></li>
+<li>a function expression of an anonymous function assigned to the variable multiply
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">multiply</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></li>
+<li>a function expression of a function named func_name assigned to the variable multiply
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">multiply</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">func_name</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span>
+<span class="p">}</span>
+</code></pre></div></li>
+</ol>
+
+<ul>
+<li>A function defined by a <code>Function</code> constructor does not inherit any scope other than the global scope</li>
+<li>Functions defined by function expressions and declarations are parsed only once while those defined by the <code>Function</code> constructor are not.</li>
+</ul>
+
+&#x270D; function expressions and declarations nested within the function generated by parsing a <code>Function constructor</code> string aren&#39;t parsed repeatly<br/><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions_and_function_scope">Mozilla function and function scope</a>
 </spoiler></div>
 
 <p><strong>25.</strong> How would you change the context of the function?</p>
 
 <div><spoiler>
+There&#39;re three ways to change context: <code>bind</code>, <code>call</code> and <code>apply</code>
+
+<ul>
+<li><code>bind</code>: create function with new context by passing parameters.</li>
+<li><code>call</code> and <code>apply</code>: call function with new context. They are different each other through the way they pass parameters to function</li>
+</ul>
+
 Ex: new XXX()
 There&#39;re 4 steps happened when <code>new</code> was called:
 
@@ -355,6 +452,42 @@ There&#39;re 4 steps happened when <code>new</code> was called:
 <p><strong>26.</strong> About <code>typeof</code> and <code>instanceOf</code> operators, <code>constructor</code> property?</p>
 
 <div><spoiler>
+Object are aggregations of properties. A properties can reference an object or a primitive. Primitives are values, they have no properties. Because Javascript will readily coerce between primitivies and objects.<br/>&#x270D; All examples below are only in non-strict mode. strict mode is quite difference.
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="nb">String</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">returnMe</span><span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="s2">&quot;abc&quot;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">returnMe</span><span class="p">();</span>
+
+<span class="nx">a</span><span class="p">;</span> <span class="c1">//&quot;abc&quot;</span>
+<span class="k">typeof</span> <span class="nx">a</span><span class="p">;</span> <span class="c1">//&quot;string&quot; (still a primitive)</span>
+<span class="nx">b</span><span class="p">;</span> <span class="c1">//&quot;abc&quot;</span>
+<span class="k">typeof</span> <span class="nx">b</span><span class="p">;</span> <span class="c1">//&quot;object&quot;</span>
+<span class="nx">a</span> <span class="o">===</span> <span class="nx">b</span><span class="p">;</span> <span class="c1">// false</span>
+</code></pre></div>
+In this case string value is coerced to string object in order to access the property returnMe. The string object is only used for a fraction of second after which it is sacrificed to the Gods of garbage collection. But in this case, we prevent GC through assign to variable.<br/>This is what realy happen
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">primitive</span> <span class="o">=</span> <span class="s2">&quot;september&quot;</span><span class="p">;</span>
+<span class="nx">primitive</span><span class="p">.</span><span class="nx">vowels</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="c1">//new object created to set property</span>
+<span class="p">(</span><span class="k">new</span> <span class="nb">String</span><span class="p">(</span><span class="s2">&quot;september&quot;</span><span class="p">)).</span><span class="nx">vowels</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+
+<span class="nx">primitive</span><span class="p">.</span><span class="nx">vowels</span><span class="p">;</span>
+<span class="c1">//another new object created to retrieve property</span>
+<span class="p">(</span><span class="k">new</span> <span class="nb">String</span><span class="p">(</span><span class="s2">&quot;september&quot;</span><span class="p">)).</span><span class="nx">vowels</span><span class="p">;</span> <span class="c1">//undefined</span>
+</code></pre></div>
+More details: <a href="http://javascriptweblog.wordpress.com/2010/09/27/the-secret-life-of-javascript-primitives/">Secret of Javascript Primitives</a>
+
+<ul>
+<li><code>typeof</code>: return built-in type, it has some issues in cases of null return <code>object</code>, any object type other function return <code>object</code>. Normally, people will define their own function instead of <code>typeof</code> using <code>Object.prototype.toString.call()</code> to get internal [[Class]].
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">toType</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">({}).</span><span class="nx">toString</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">obj</span><span class="p">).</span><span class="nx">match</span><span class="p">(</span><span class="sr">/\s([a-zA-Z]+)/</span><span class="p">)[</span><span class="mi">1</span><span class="p">].</span><span class="nx">toLowerCase</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div></li>
+<li><code>instanceOf</code>: check whether anything from left-hand object&#39;s prototype chain is the same object as what&#39;s reference by prototype property of right-hand object.
+The problem arise when it comes to scripting in multi-frame DOM environments <a href="http://perfectionkills.com/instanceof-considered-harmful-or-how-to-write-a-robust-isarray/">instanceOf harmful</a></li>
+</ul>
+
 </spoiler></div>
 
 <p><strong>27.</strong> List every way the browser (using HTML, JS or CSS) can communicate with the server?</p>
@@ -378,6 +511,35 @@ A key in object can be only <code>string</code>, therefore if object is used as 
 </spoiler></div>
 
 <p>&#x270D; There&#39;re the definition I copy from Internet.</p>
+
+<p><strong>29.</strong> What&#39;s closure?</p>
+
+<div><spoiler>
+Closure is side-effect of lexical scoping. There are two types of scoping: lexical, dynamic. Lexical scoping seem to be more popuplar than dynamic scope.
+
+<ul>
+<li>Lexical scoping: is statically defined by the function&#39;s physical placement within the written source code.
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">outter</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kd">function</span> <span class="nx">inner</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></li>
+<li>Dynamic scoping:
+<div class="highlight"><pre><code class="lisp language-lisp" data-lang="lisp"><span class="nv">void</span> <span class="nv">dynamic</span><span class="p">()</span> <span class="nv">{</span>
+  <span class="nv">console.log</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+<span class="nv">}</span>
+
+<span class="nv">void</span> <span class="nv">main</span><span class="p">()</span> <span class="nv">{</span>
+  <span class="nv">var</span> <span class="nv">x</span> <span class="nb">=</span> <span class="mi">1</span><span class="c1">;</span>
+  <span class="nv">dynamic</span><span class="p">()</span><span class="c1">;</span>
+<span class="nv">}</span>
+</code></pre></div></li>
+</ul>
+
+It happens through [[scope]] property, more details in question 13.
+</spoiler></div>
 
         </section>
 

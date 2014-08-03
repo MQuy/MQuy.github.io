@@ -204,9 +204,10 @@ hr {
 blockquote {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    margin: 1.6em 0 1.6em -2.2em;
+    margin: 1.6em 0 1.6em 0em;
     padding: 0 0 0 1.6em;
-    border-left: #4a4a4a 0.4em solid;
+    border-left: #DDD 4px solid;
+    color: #666;
 }
 
 blockquote p {

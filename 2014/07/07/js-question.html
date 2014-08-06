@@ -299,6 +299,13 @@ In a nutshell, prototypal inheritance is when an object inherits(*) from another
 <p><strong>17.</strong> Why extending array is bad idea?</p>
 
 <div><spoiler>
+Javascript prototypal makes it easy to extend all array objects with custom methods. But normally, we extend via <code>Array.prototype</code> because it&#39;s much easier and more efficient
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">last</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+<span class="p">};</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">].</span><span class="nx">last</span><span class="p">();</span> <span class="c1">// 3</span>
+</code></pre></div>
+However, extending <code>Array.prototype</code> comes with the price; that price is change of collisions. When scripts coexists with other scripts in an application, it&#39;s important for those scripts not to conflict with each other. Extending <code>Array.prototype</code> while tempting and seemingly useful, unfortunately isn&#39;t very safe in a diverse environment. Different scripts can end up define same-named methods but with different behavior. Such behavior often lead to inconsitent behavior and hard-to-track errors.<br/>Collisions can happen not only with user-defined code but also with <strong>proprietary methods</strong> implements by environment itseft(e.g <code>Array.prototype.indexOf</code>) or from <strong>future standards</strong>
 </spoiler></div>
 
 <p><strong>18.</strong> Explain how to prototypal inheritance works?</p>
@@ -309,11 +316,35 @@ In a nutshell, prototypal inheritance is when an object inherits(*) from another
 <p><strong>19.</strong> Explain function hoisting?</p>
 
 <div><spoiler>
+Function hoisting happens when it was called. In the first step, js engine create variable object via scanning <code>var</code> and <code>function declaration</code>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">hositing</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// code here</span>
+  <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="c1">// code here</span>
+  <span class="kd">function</span> <span class="nx">action</span><span class="p">()</span> <span class="p">{};</span>
+<span class="p">}</span>
+</code></pre></div>
 </spoiler></div>
 
 <p><strong>20.</strong> Explain event delegation (what&#39;s the difference between on and bind is in jQuery)?</p>
 
 <div><spoiler>
+If there are many element inside one parent and you want to handle events on all of them - don&#39;t bind handler to each element. Instead, bind the single handler to their parent and get the child from <code>event.target</code>
+There&#39;re two main benefits:
+
+<ul>
+<li>Memory footprint which used by event listeners goes down.</li>
+<li>Also work for new element which is created dynamically.</li>
+</ul>
+
+But it has its own limits
+
+<ul>
+<li>Most of event do bubble but not all of them.</li>
+<li>Delegation puts extra load on the browser because the handler runs when an event happens anywhere inside the container</li>
+</ul>
+
+jQuery bind is used for attaching an event handler directly to elements.
 </spoiler></div>
 
 <p><strong>21.</strong> What are promises?</p>

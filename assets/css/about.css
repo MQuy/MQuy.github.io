@@ -13,7 +13,7 @@ p {
   font-weight: bold; }
 
 .column-one {
-  width: 25%;
+  width: 328px;
   display: inline-block;
   background: #e85446;
   color: white;
@@ -24,7 +24,12 @@ p {
   -moz-box-sizing: border-box;
   -o-box-sizing: border-box;
   -ms-box-sizing: border-box;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  -webkit-text-shadow: 0px 0px 4px #dd1212;
+  -moz-text-shadow: 0px 0px 4px #dd1212;
+  -o-text-shadow: 0px 0px 4px #dd1212;
+  -ms-text-shadow: 0px 0px 4px #dd1212;
+  text-shadow: 0px 0px 4px #dd1212; }
   .column-one h1 {
     font-family: Oswald;
     font-size: 40px;
@@ -47,10 +52,30 @@ p {
   .column-one .contact {
     font-size: 16px; }
     .column-one .contact > div {
-      margin: 12px 0px; }
+      margin-top: 4px;
+      margin-bottom: 4px; }
+  .column-one .icon-wrapper {
+    background: white;
+    width: 36px;
+    height: 36px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    border: 1px solid #e74e49;
+    margin: 0px 8px 0px 0px;
+    -webkit-border-radius: 36px;
+    -moz-border-radius: 36px;
+    -o-border-radius: 36px;
+    -ms-border-radius: 36px;
+    border-radius: 36px; }
+    .column-one .icon-wrapper img {
+      max-height: 28px;
+      max-width: 28px;
+      margin: 4px 0px;
+      vertical-align: middle; }
 
 .column-two {
-  width: 75%;
+  width: 800px;
   display: inline-block;
   background: white;
   vertical-align: top;
@@ -72,7 +97,9 @@ p {
       width: 20%;
       vertical-align: top; }
       .column-two .item-view .time img {
-        margin: 28px 26px 16px 26px; }
+        margin: 24px 26px 0px 26px;
+        max-width: 48px;
+        max-height: 48px; }
     .column-two .item-view .content {
       display: inline-block;
       width: 80%;

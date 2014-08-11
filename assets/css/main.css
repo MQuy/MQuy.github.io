@@ -33,6 +33,10 @@ img.profile {
   	border-radius: 50px;
 }
 
+img.big-profile {
+	width: 128px;
+	border-radius: 128px;
+}
 .spoiler > p {
 	margin-top: 0px;
 	border: 1px dashed #CCC;

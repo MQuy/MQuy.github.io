@@ -1,0 +1,111 @@
+html, body {
+  margin: 0px;
+  font-family: "Nunito", sans-serif;
+  font-size: 18px; }
+
+p {
+  margin: 8px 0px; }
+
+.txt-center {
+  text-align: center; }
+
+.f-bold {
+  font-weight: bold; }
+
+.column-one {
+  width: 25%;
+  display: inline-block;
+  background: #e85446;
+  color: white;
+  font-size: 32px;
+  padding: 0px 40px;
+  vertical-align: top;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box; }
+  .column-one h1 {
+    font-family: Oswald;
+    font-size: 40px;
+    text-align: center;
+    line-height: 56px; }
+  .column-one .title {
+    font-size: 32px;
+    font-weight: 300; }
+  .column-one .avatar {
+    text-align: center; }
+    .column-one .avatar img {
+      width: 200px;
+      height: 200px;
+      margin: 0px 0px 16px 0px;
+      -webkit-border-radius: 200px;
+      -moz-border-radius: 200px;
+      -o-border-radius: 200px;
+      -ms-border-radius: 200px;
+      border-radius: 200px; }
+  .column-one .contact {
+    font-size: 16px; }
+    .column-one .contact > div {
+      margin: 12px 0px; }
+
+.column-two {
+  width: 75%;
+  display: inline-block;
+  background: white;
+  vertical-align: top;
+  padding: 0px 64px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box; }
+  .column-two h2 {
+    font-family: Oswald;
+    font-weight: 400;
+    font-size: 32px;
+    color: #e85446; }
+  .column-two .item-view {
+    width: 800px; }
+    .column-two .item-view .time {
+      display: inline-block;
+      width: 20%;
+      vertical-align: top; }
+      .column-two .item-view .time img {
+        margin: 28px 26px 16px 26px; }
+    .column-two .item-view .content {
+      display: inline-block;
+      width: 80%;
+      vertical-align: top; }
+      .column-two .item-view .content span {
+        width: 160px;
+        display: inline-block; }
+      .column-two .item-view .content .process {
+        width: 300px;
+        background: #eeeeee;
+        height: 24px;
+        display: inline-block;
+        margin: 12px 0px;
+        vertical-align: middle;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -o-border-radius: 4px;
+        -ms-border-radius: 4px;
+        border-radius: 4px; }
+        .column-two .item-view .content .process .percentage {
+          background: #e85446;
+          height: 100%;
+          -webkit-border-radius: 4px;
+          -moz-border-radius: 4px;
+          -o-border-radius: 4px;
+          -ms-border-radius: 4px;
+          border-radius: 4px; }
+
+.fontsize-18px {
+  font-size: 18px; }
+
+a {
+  color: white;
+  text-decoration: none; }
+  a:hover {
+    opacity: 0.5; }

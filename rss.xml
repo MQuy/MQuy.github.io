@@ -20,7 +20,7 @@
     <item>
       <title>ECMAScript Overview</title>
       <link>http://mquy.github.io//2014/06/29/ECMAScript-overview.html</link>
-      <description>&lt;h5 id=&quot;toc_0&quot;&gt;ECMAScript&lt;/h5&gt;
+      <description>&lt;h5 id=&quot;ecmascript&quot;&gt;ECMAScript&lt;/h5&gt;
 
 &lt;p&gt;ECMAScript is an object-oriented programming language for performing computations and manipulating objects within a host environment(normally web browser).&lt;/p&gt;
 </description>

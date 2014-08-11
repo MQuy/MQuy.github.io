@@ -27,7 +27,7 @@
 
     <article class="post">
         <header class="post-header">
-            <a id="blog-logo" href="/">
+            <a id="blog-logo" href="">
                 
                 <span class="blog-title">Js for Interview Question</span>
             </a>
@@ -43,11 +43,11 @@
 
         <section class="post-content">
             <p><strong>1.</strong> Define such a, that expression would resolve to true</p>
-<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="p">(</span><span class="nx">a</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">a</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">a</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">(</span><span class="nx">a</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">a</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">a</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
 <div><spoiler>
 <strong>Method 1:</strong>
-<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span>
   <span class="nx">i</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
   <span class="nx">valueOf</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">i</span><span class="o">++</span><span class="p">;</span>
@@ -55,7 +55,7 @@
 <span class="p">};</span>
 </code></pre></div>
 <strong>Method 2:</strong>
-<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">global</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">global</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
   <span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span><span class="nx">global</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">get</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -103,7 +103,7 @@ Both String conversion and Number conversion try to convert into it&#39;s type f
 
 <div><spoiler>
 When object was to be represented as a text value, it need to be converted into String type and <code>toString</code> will be called automatically.<br/>The default <code>toString</code> function will return <code>[object type]</code>.<br/>Common way to use is to detect object class
-<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">toString</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">toString</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span><span class="p">;</span>
 
 <span class="nx">toString</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">new</span> <span class="nb">String</span><span class="p">)</span> <span class="c1">// [object String]</span>
 <span class="nx">toString</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="kc">undefined</span><span class="p">)</span> <span class="c1">// [object Undefined]</span>
@@ -145,7 +145,7 @@ In general, JSON spec says that <em>&quot;a string is a sequence of zero or more
 <p><strong>8.</strong> An example of a singleton pattern?</p>
 
 <div><spoiler>
-<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">global</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">global</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">instance</span><span class="p">;</span>
 
   <span class="kd">function</span> <span class="nx">Singleton</span><span class="p">()</span> <span class="p">{</span>
@@ -174,7 +174,7 @@ In general, JSON spec says that <em>&quot;a string is a sequence of zero or more
 </ul>
 
 <code>undeclared</code> means that the variable wasn&#39;t declared in chaining scope.<br/>declared vs undeclared variables also have mean like that
-<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">declared</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">// explicit</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">declared</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">// explicit</span>
 <span class="nx">undeclared</span> <span class="o">=</span> <span class="mi">1</span>
 </code></pre></div>
 </spoiler></div>
@@ -246,7 +246,7 @@ Main difference is that <code>==</code> compares only value while <code>===</cod
 </ul>
 
 You can think like that
-<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="nx">executionContextObj</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">executionContextObj</span> <span class="o">=</span> <span class="p">{</span>
     <span class="nx">scopeChain</span><span class="o">:</span> <span class="p">{</span> <span class="cm">/* variableObject + all parent execution context&#39;s variableObject */</span> <span class="p">},</span>
     <span class="nx">variableObject</span><span class="o">:</span> <span class="p">{</span> <span class="cm">/* function arguments / parameters, inner variable and function declarations */</span> <span class="p">},</span>
     <span class="k">this</span><span class="o">:</span> <span class="p">{}</span>
@@ -300,7 +300,7 @@ In a nutshell, prototypal inheritance is when an object inherits(*) from another
 
 <div><spoiler>
 Javascript prototypal makes it easy to extend all array objects with custom methods. But normally, we extend via <code>Array.prototype</code> because it&#39;s much easier and more efficient
-<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">last</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">last</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">return</span> <span class="k">this</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
 <span class="p">};</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">].</span><span class="nx">last</span><span class="p">();</span> <span class="c1">// 3</span>
@@ -317,7 +317,7 @@ However, extending <code>Array.prototype</code> comes with the price; that price
 
 <div><spoiler>
 Function hoisting happens when it was called. In the first step, js engine create variable object via scanning <code>var</code> and <code>function declaration</code>
-<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">hositing</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">hositing</span><span class="p">()</span> <span class="p">{</span>
   <span class="c1">// code here</span>
   <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
   <span class="c1">// code here</span>
@@ -422,7 +422,7 @@ There&#39;re some reasons why people use strict mode:
 
 <div><spoiler>
 The main difference is about hosting(in declaration not in expression).
-<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="nx">FunctionDeclaration</span> <span class="o">:</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">FunctionDeclaration</span> <span class="o">:</span>
 <span class="kd">function</span> <span class="nx">Identifier</span> <span class="p">(</span> <span class="nx">FormalParameterListopt</span> <span class="p">)</span> <span class="p">{</span> <span class="nx">FunctionBody</span> <span class="p">}</span>
 <span class="nx">FunctionExpression</span> <span class="o">:</span>
 <span class="kd">function</span> <span class="nx">Identifieropt</span> <span class="p">(</span> <span class="nx">FormalParameterListopt</span> <span class="p">)</span> <span class="p">{</span> <span class="nx">FunctionBody</span> <span class="p">}</span>
@@ -430,26 +430,31 @@ The main difference is about hosting(in declaration not in expression).
 <a href="http://kangax.github.io/nfe">Named function expression demystified</a><br/>There&#39;re four ways to define function
 
 <ol>
-<li>a function defined with the Function constructor assigned to the variable multiply
-<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">multiply</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Function</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;return x * y;&quot;</span><span class="p">);</span>
-</code></pre></div></li>
-<li>a function declaration of a function named multiply
-<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">multiply</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></li>
-<li>a function expression of an anonymous function assigned to the variable multiply
-<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">multiply</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></li>
-<li>a function expression of a function named func_name assigned to the variable multiply
-<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">multiply</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">func_name</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span>
-<span class="p">}</span>
-</code></pre></div></li>
+<li>a function defined with the Function constructor assigned to the variable multiply</li>
 </ol>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">  <span class="kd">var</span> <span class="nx">multiply</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Function</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;return x * y;&quot;</span><span class="p">);</span>
+</code></pre></div>
+<ol>
+<li>a function declaration of a function named multiply</li>
+</ol>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">  <span class="kd">function</span> <span class="nx">multiply</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>a function expression of an anonymous function assigned to the variable multiply</li>
+</ol>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">  <span class="kd">var</span> <span class="nx">multiply</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>a function expression of a function named func_name assigned to the variable multiply</li>
+</ol>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">  <span class="kd">var</span> <span class="nx">multiply</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">func_name</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span>
+  <span class="p">}</span>
+</code></pre></div>
 <ul>
 <li>A function defined by a <code>Function</code> constructor does not inherit any scope other than the global scope</li>
 <li>Functions defined by function expressions and declarations are parsed only once while those defined by the <code>Function</code> constructor are not.</li>
@@ -484,7 +489,7 @@ There&#39;re 4 steps happened when <code>new</code> was called:
 
 <div><spoiler>
 Object are aggregations of properties. A properties can reference an object or a primitive. Primitives are values, they have no properties. Because Javascript will readily coerce between primitivies and objects.<br/>&#x270D; All examples below are only in non-strict mode. strict mode is quite difference.
-<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="nb">String</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">returnMe</span><span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nb">String</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">returnMe</span><span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -498,7 +503,7 @@ Object are aggregations of properties. A properties can reference an object or a
 <span class="nx">a</span> <span class="o">===</span> <span class="nx">b</span><span class="p">;</span> <span class="c1">// false</span>
 </code></pre></div>
 In this case string value is coerced to string object in order to access the property returnMe. The string object is only used for a fraction of second after which it is sacrificed to the Gods of garbage collection. But in this case, we prevent GC through assign to variable.<br/>This is what realy happen
-<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">primitive</span> <span class="o">=</span> <span class="s2">&quot;september&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">primitive</span> <span class="o">=</span> <span class="s2">&quot;september&quot;</span><span class="p">;</span>
 <span class="nx">primitive</span><span class="p">.</span><span class="nx">vowels</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
 <span class="c1">//new object created to set property</span>
 <span class="p">(</span><span class="k">new</span> <span class="nb">String</span><span class="p">(</span><span class="s2">&quot;september&quot;</span><span class="p">)).</span><span class="nx">vowels</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
@@ -510,11 +515,13 @@ In this case string value is coerced to string object in order to access the pro
 More details: <a href="http://javascriptweblog.wordpress.com/2010/09/27/the-secret-life-of-javascript-primitives/">Secret of Javascript Primitives</a>
 
 <ul>
-<li><code>typeof</code>: return built-in type, it has some issues in cases of null return <code>object</code>, any object type other function return <code>object</code>. Normally, people will define their own function instead of <code>typeof</code> using <code>Object.prototype.toString.call()</code> to get internal [[Class]].
-<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">toType</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="p">({}).</span><span class="nx">toString</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">obj</span><span class="p">).</span><span class="nx">match</span><span class="p">(</span><span class="sr">/\s([a-zA-Z]+)/</span><span class="p">)[</span><span class="mi">1</span><span class="p">].</span><span class="nx">toLowerCase</span><span class="p">()</span>
-<span class="p">}</span>
-</code></pre></div></li>
+<li><code>typeof</code>: return built-in type, it has some issues in cases of null return <code>object</code>, any object type other function return <code>object</code>. Normally, people will define their own function instead of <code>typeof</code> using <code>Object.prototype.toString.call()</code> to get internal [[Class]].</li>
+</ul>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">  <span class="kd">var</span> <span class="nx">toType</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="p">({}).</span><span class="nx">toString</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">obj</span><span class="p">).</span><span class="nx">match</span><span class="p">(</span><span class="sr">/\s([a-zA-Z]+)/</span><span class="p">)[</span><span class="mi">1</span><span class="p">].</span><span class="nx">toLowerCase</span><span class="p">()</span>
+  <span class="p">}</span>
+</code></pre></div>
+<ul>
 <li><code>instanceOf</code>: check whether anything from left-hand object&#39;s prototype chain is the same object as what&#39;s reference by prototype property of right-hand object.
 The problem arise when it comes to scripting in multi-frame DOM environments <a href="http://perfectionkills.com/instanceof-considered-harmful-or-how-to-write-a-robust-isarray/">instanceOf harmful</a></li>
 </ul>
@@ -549,26 +556,27 @@ A key in object can be only <code>string</code>, therefore if object is used as 
 Closure is side-effect of lexical scoping. There are two types of scoping: lexical, dynamic. Lexical scoping seem to be more popuplar than dynamic scope.
 
 <ul>
-<li>Lexical scoping: is statically defined by the function&#39;s physical placement within the written source code.
-<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">outter</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="kd">function</span> <span class="nx">inner</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></li>
-<li>Dynamic scoping:
-<div class="highlight"><pre><code class="lisp language-lisp" data-lang="lisp"><span class="nv">void</span> <span class="nv">dynamic</span><span class="p">()</span> <span class="nv">{</span>
-  <span class="nv">console.log</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
-<span class="nv">}</span>
-
-<span class="nv">void</span> <span class="nv">main</span><span class="p">()</span> <span class="nv">{</span>
-  <span class="nv">var</span> <span class="nv">x</span> <span class="nb">=</span> <span class="mi">1</span><span class="c1">;</span>
-  <span class="nv">dynamic</span><span class="p">()</span><span class="c1">;</span>
-<span class="nv">}</span>
-</code></pre></div></li>
+<li>Lexical scoping: is statically defined by the function&#39;s physical placement within the written source code.</li>
 </ul>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">  <span class="kd">function</span> <span class="nx">outter</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="kd">function</span> <span class="nx">inner</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Dynamic scoping:</li>
+</ul>
+<div class="highlight"><pre><code class="language-lisp" data-lang="lisp">  <span class="nv">void</span> <span class="nv">dynamic</span><span class="p">()</span> <span class="nv">{</span>
+      <span class="nv">console.log</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+  <span class="nv">}</span>
 
+  <span class="nv">void</span> <span class="nv">main</span><span class="p">()</span> <span class="nv">{</span>
+      <span class="nv">var</span> <span class="nv">x</span> <span class="nb">=</span> <span class="mi">1</span><span class="c1">;</span>
+      <span class="nv">dynamic</span><span class="p">()</span><span class="c1">;</span>
+  <span class="nv">}</span>
+</code></pre></div>
 It happens through [[scope]] property, more details in question 13.
 </spoiler></div>
 
@@ -580,7 +588,7 @@ It happens through [[scope]] property, more details in question 13.
         	<!-- If we want to display author's name and bio -->
             
                 <section class="author">
-                	<header> <a href="/"> <img class="profile" src="/assets/images/profile.jpg" alt="Author's profile picture"></a></header>
+                	<header> <a href=""> <img class="profile" src="/assets/images/profile.jpg" alt="Author's profile picture"></a></header>
                 	<article>
                 		<!-- Author Name -->
                     	<h4> MQuy </h4>
@@ -635,9 +643,9 @@ It happens through [[scope]] property, more details in question 13.
 
 
     <footer class="site-footer">
-        <a class="subscribe icon-feed" href="/rss.xml"><span class="tooltip">Subscribe!</span></a>
+        <a class="subscribe icon-feed" href="rss.xml"><span class="tooltip">Subscribe!</span></a>
         <div class="inner">
-             <section class="copyright">All content copyright <a href="/">Minh Quy Blog</a> &copy;  &bull; All rights reserved.</section>
+             <section class="copyright">All content copyright <a href="">Minh Quy Blog</a> &copy;  &bull; All rights reserved.</section>
              <section class="poweredby">Made with Jekyll using <a href="http://github.com/rosario/kasper">Kasper theme</a></section>
         </div>
     </footer>

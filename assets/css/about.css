@@ -91,7 +91,7 @@ p {
     font-size: 32px;
     color: #e85446; }
   .column-two .item-view {
-    width: 800px; }
+    width: 100%; }
     .column-two .item-view .time {
       display: inline-block;
       width: 20%;
@@ -127,12 +127,29 @@ p {
           -o-border-radius: 4px;
           -ms-border-radius: 4px;
           border-radius: 4px; }
+  .column-two .portfolio {
+    width: 100%; }
+    .column-two .portfolio a {
+      display: inline-block;
+      width: 328px;
+      vertical-align: top;
+      padding: 2px; }
+    .column-two .portfolio img {
+      width: 100%; }
 
 .fontsize-18px {
   font-size: 18px; }
 
+.fontsize-15px {
+  font-size: 15px; }
+
 a {
   color: white;
-  text-decoration: none; }
+  text-decoration: none;
+  -webkit-transition: 200ms all linear;
+  -moz-transition: 200ms all linear;
+  -o-transition: 200ms all linear;
+  -ms-transition: 200ms all linear;
+  transition: 200ms all linear; }
   a:hover {
     opacity: 0.5; }

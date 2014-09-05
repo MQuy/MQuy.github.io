@@ -127,6 +127,8 @@ p {
           -o-border-radius: 4px;
           -ms-border-radius: 4px;
           border-radius: 4px; }
+    .column-two .item-view a {
+      color: black; }
   .column-two .portfolio {
     width: 100%; }
     .column-two .portfolio a {

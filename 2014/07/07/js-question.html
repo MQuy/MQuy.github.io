@@ -187,6 +187,21 @@ In general, JSON spec says that <em>&quot;a string is a sequence of zero or more
 <p><strong>11</strong> The standard <code>addEventListener</code> is supported in which browsers?</p>
 
 <div><spoiler>
+<code>addEventListener</code> is a method registers the specified listener on EvenTarget. The even target may be an Element in document, Document itself, a Window or any other object that supports events(such as XMLHttpRequest).<br/>It is supported in most of browsers except IE 9.<br/>When talking about <code>addEventListener</code>, people often compare it with inline events. Inline events are better in case of browser compatibility but it has many drawbacks.
+
+<ul>
+<li>You may only have one inline event assigned.</li>
+<li>The context <code>this</code> in case of inline event is global compare to HTML element in case of <code>addEventListener</code>.</li>
+</ul>
+
+Microsoft has developed an event registration model, it looks similar to <code>addEventListener</code> but has some important callbacks.
+
+<ul>
+<li>Events always bubble, no capturing possibility.</li>
+<li><code>this</code> always refers to the windows.</li>
+</ul>
+
+<a href="https://developer.mozilla.org/en/docs/Web/API/EventTarget.addEventListener">More details</a>
 </spoiler></div>
 
 <p><strong>12.</strong> What is the difference between <code>==</code> and <code>===</code>? Which one would you use?</p>
@@ -289,12 +304,28 @@ In a nutshell, prototypal inheritance is when an object inherits(*) from another
 <p><strong>15.</strong> What is difference between private variable, public variable and static variable? How we achieve this in JS?</p>
 
 <div><spoiler>
+Private variable is only visible in current scope.<br/>Public variable is visible in both current scope and other scopes through accessing.<br/>Static variable belong to class intead of an instance.
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">Variable</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="kr">private</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="kr">public</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+<span class="p">}</span>
+<span class="nx">Variable</span><span class="p">.</span><span class="kr">static</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</code></pre></div>
 </spoiler></div>
 
 <p><strong>16.</strong> How to achieve inheritance? Compare ways of inheritance. What are the downsides?</p>
 
 <div><spoiler>
-</spoiler></div>
+There are three common ways to achieve inheritance.
+
+<ul>
+<li>Pseudo-classical pattern, assigning prototype to prototype.</li>
+<li>Function pattern, declaring attribute in side object and inherit through call it again.</li>
+<li>Prototypal pattern, using <code>Object.create</code>.</li>
+</ul>
+
+<a href="http://davidshariff.com/blog/javascript-inheritance-patterns/">More details</a><br/>In pseudo-classical pattern, parent and child share same prototype. It leads drawback that when we modify child it will also change in parent.<br/>In function pattern, they don&#39;t use prototype concept and is very strict to follow and everytime we create new object javascript engine need to recompile everything.<br/>In prototypal pattern, it cames as standard of EMACScript 5 therefore it leads to browser compability.<br/></spoiler></div>
 
 <p><strong>17.</strong> Why extending array is bad idea?</p>
 
@@ -311,12 +342,13 @@ However, extending <code>Array.prototype</code> comes with the price; that price
 <p><strong>18.</strong> Explain how to prototypal inheritance works?</p>
 
 <div><spoiler>
+According to section <a href="http://www.ecma-international.org/ecma-262/5.1/#sec-8.6.2">8.6.2</a> in ECMA-262, all objects have an internal property called [[Prototype]]. The value of this property is either <strong>null</strong> or an object and is used for implementing inheritance
 </spoiler></div>
 
 <p><strong>19.</strong> Explain function hoisting?</p>
 
 <div><spoiler>
-Function hoisting happens when it was called. In the first step, js engine create variable object via scanning <code>var</code> and <code>function declaration</code>
+Function hoisting happens when it is a function declaration and was declared in other&#39;s scope. In the first step, js engine create variable object via scanning <code>var</code> and <code>function declaration</code>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">hositing</span><span class="p">()</span> <span class="p">{</span>
   <span class="c1">// code here</span>
   <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>

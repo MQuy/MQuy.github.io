@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>   
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
@@ -11,6 +11,7 @@
     <meta name="MobileOptimized" content="320" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <link ref="shortcut icon" href="/assets/images/favicon.ico" type="image/ico" />
     <link rel="stylesheet" type="text/css" href="/assets/css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
@@ -22,8 +23,35 @@
 </head>
 <body class="home-template">
 
-    
-    <main class="content" role="main">
+
+    <header class="site-head" >
+    <div class="vertical">
+        <div class="site-head-content" class="inner">
+            
+            <a href="/about.html">
+                <img class="big-profile" src="/assets/images/profile.jpg"/>
+            </a>
+            <h1 class="blog-title">Minh Quy Blog</h1>
+            <h2 class="blog-description">
+                Blogging about stuffs which I learn.
+                
+            </h2>
+            <div>
+                <a class="icon-twitter" href="https://twitter.com/MQuy90">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/mquy90">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/+MinhQuy90">
+                    <span class="hidden">Google+</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="content" role="main">
 
     <article class="post">
         <header class="post-header">
@@ -222,6 +250,9 @@
 
         
 
+        <br/>
+        <br/>
+        <br/>
         <footer class="post-footer">
         	<!-- If we want to display author's name and bio -->
             
@@ -255,23 +286,6 @@
             </section>
 
             
-            <br/>
-            <section class="disqus">
-            	<div id="disqus_thread"></div>
-            	<script type="text/javascript">
-
-            	    var disqus_shortname = 'mquy';
-            		var disqus_developer = 0; // developer mode is on
-            	    (function() {
-            	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            	        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-            	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-            	    })();
-            	</script>
-            	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-            	<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-            </section>
-            
 
         </footer>
 
@@ -288,7 +302,7 @@
         </div>
     </footer>
 
-    
+
     <script type="text/javascript" src="/assets/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
     <script type="text/javascript" src="/assets/js/index.js"></script>
@@ -306,6 +320,6 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
 
-    </script>   
+    </script>
 </body>
 </html>

@@ -15,8 +15,8 @@ p {
 .column-one {
   width: 328px;
   display: inline-block;
-  background: #e85446;
-  color: white;
+  background: #E85446;
+  color: #FFF;
   font-size: 32px;
   padding: 0px 40px;
   vertical-align: top;
@@ -25,11 +25,11 @@ p {
   -o-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
-  -webkit-text-shadow: 0px 0px 4px #dd1212;
-  -moz-text-shadow: 0px 0px 4px #dd1212;
-  -o-text-shadow: 0px 0px 4px #dd1212;
-  -ms-text-shadow: 0px 0px 4px #dd1212;
-  text-shadow: 0px 0px 4px #dd1212; }
+  -webkit-text-shadow: 0px 0px 4px #DD1212;
+  -moz-text-shadow: 0px 0px 4px #DD1212;
+  -o-text-shadow: 0px 0px 4px #DD1212;
+  -ms-text-shadow: 0px 0px 4px #DD1212;
+  text-shadow: 0px 0px 4px #DD1212; }
   .column-one h1 {
     font-family: Oswald;
     font-size: 40px;
@@ -55,13 +55,13 @@ p {
       margin-top: 4px;
       margin-bottom: 4px; }
   .column-one .icon-wrapper {
-    background: white;
+    background: #FFF;
     width: 36px;
     height: 36px;
     text-align: center;
     display: inline-block;
     vertical-align: middle;
-    border: 1px solid #e74e49;
+    border: 1px solid #E74E49;
     margin: 0px 8px 0px 0px;
     -webkit-border-radius: 36px;
     -moz-border-radius: 36px;
@@ -77,7 +77,7 @@ p {
 .column-two {
   width: 800px;
   display: inline-block;
-  background: white;
+  background: #FFF;
   vertical-align: top;
   padding: 0px 64px;
   -webkit-box-sizing: border-box;
@@ -89,7 +89,7 @@ p {
     font-family: Oswald;
     font-weight: 400;
     font-size: 32px;
-    color: #e85446; }
+    color: #E85446; }
   .column-two .item-view {
     width: 100%; }
     .column-two .item-view .time {
@@ -109,7 +109,7 @@ p {
         display: inline-block; }
       .column-two .item-view .content .process {
         width: 300px;
-        background: #eeeeee;
+        background: #EEE;
         height: 24px;
         display: inline-block;
         margin: 12px 0px;
@@ -120,7 +120,7 @@ p {
         -ms-border-radius: 4px;
         border-radius: 4px; }
         .column-two .item-view .content .process .percentage {
-          background: #e85446;
+          background: #E85446;
           height: 100%;
           -webkit-border-radius: 4px;
           -moz-border-radius: 4px;
@@ -128,7 +128,7 @@ p {
           -ms-border-radius: 4px;
           border-radius: 4px; }
     .column-two .item-view a {
-      color: black; }
+      color: #000; }
   .column-two .portfolio {
     width: 100%; }
     .column-two .portfolio a {
@@ -146,7 +146,7 @@ p {
   font-size: 15px; }
 
 a {
-  color: white;
+  color: #FFF;
   text-decoration: none;
   -webkit-transition: 200ms all linear;
   -moz-transition: 200ms all linear;

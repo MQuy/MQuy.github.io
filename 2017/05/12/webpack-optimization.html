@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Minh Quy Blog - Blogging about stuffs which I learn</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link ref="shortcut icon" href="/assets/images/favicon.ico" type="image/ico" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+    <!-- This is for syntax highlight -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css">
+    <!-- Customisation  -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+
+</head>
+<body class="home-template">
+
+
+    <header class="site-head" >
+    <div class="vertical">
+        <div class="site-head-content" class="inner">
+            
+            <a href="/about.html">
+                <img class="big-profile" src="/assets/images/profile.jpg"/>
+            </a>
+            <h1 class="blog-title">Minh Quy Blog</h1>
+            <h2 class="blog-description">
+                Blogging about stuffs which I learn.
+                
+            </h2>
+            <div>
+                <a class="icon-twitter" href="https://twitter.com/MQuy90">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/mquy90">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/+MinhQuy90">
+                    <span class="hidden">Google+</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post">
+        <header class="post-header">
+            <a id="blog-logo" href="">
+                
+                <span class="blog-title">Smart Loading Assets For Production</span>
+            </a>
+        </header>
+
+        <span class="post-meta">
+        	<time datetime="2017-05-12">12 May 2017</time>
+        	
+        		on
+	        	
+	        
+       	</span>
+
+        <section class="post-content">
+            <h3 id="optimize">Optimize</h3>
+
+<p>Recently, when we check javascript error logs in our system, we notice that there are several issues which are related to the &quot;old browser&quot; like</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">Uncaught</span> <span class="nx">ReferenceError</span><span class="o">:</span> <span class="nx">Promise</span> <span class="nx">is</span> <span class="nx">not</span> <span class="nx">defined</span>
+<span class="nx">Uncaught</span> <span class="nx">ReferenceError</span><span class="o">:</span> <span class="nx">fetch</span> <span class="nx">is</span> <span class="nx">not</span> <span class="nx">defined</span>
+</code></pre></div>
+<p>After researching, we find out two approachs:</p>
+
+<ol>
+<li>When user goes to specific route which uses a &quot;modern&quot; feature. We check whether browser supports this feature or not. If not we will lazy load it.</li>
+<li>Adding all-in-one polyfill (we choose <code>babel-polyfill</code>) into our js assets and loading it first before any of our js assets.</li>
+</ol>
+
+<p>The approach one seems adding more complex into our project, we have to know which feature is not support in &quot;old browser&quot; and duplicate the check function for each route. One more important thing is our current course base, we have to refactor to work this way. Therefore we choose the approach two. The problem with approach two is that we have to load polyfill in case of &quot;modern browser&quot;. So, the way to optimize it is skip polyfill we do it via lazy like this:</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">assets</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;vendor.js&#39;</span><span class="p">,</span> <span class="s1">&#39;app.js&#39;</span><span class="p">];</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="s2">&quot;fetch&quot;</span> <span class="k">in</span> <span class="nb">window</span> <span class="o">&amp;&amp;</span> <span class="s2">&quot;Promise&quot;</span> <span class="k">in</span> <span class="nb">window</span><span class="p">))</span> <span class="p">{</span>
+  <span class="nx">assets</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="s1">&#39;polyfill.js&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">scripts</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">src</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">scriptEl</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
+  <span class="nx">scriptEl</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">src</span><span class="p">;</span>
+  <span class="nx">scriptEl</span><span class="p">.</span><span class="nx">async</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">scriptEl</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p><code>old_browser</code> depends on which features you use. In our case, they are <code>Promise</code>, <code>fetch</code></p>
+</blockquote>
+
+<p>Currently, we use webpack to build our assets. Having the output like above we have to custom the build process in webpack(in this case <code>html-webpack-plugin</code> plugin), basically the snippet looks like this:</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">compilation</span><span class="p">.</span><span class="nx">plugin</span><span class="p">(</span><span class="s1">&#39;html-webpack-plugin-alter-asset-tags&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">htmlPluginData</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="p">...</span>
+  <span class="nx">htmlPluginData</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="nx">inlineTags</span><span class="p">.</span><span class="nx">concat</span><span class="p">([{</span>
+    <span class="nx">tagName</span><span class="o">:</span> <span class="s1">&#39;script&#39;</span><span class="p">,</span>
+    <span class="nx">closeTag</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">attributes</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;text/javascript&#39;</span>
+    <span class="p">},</span>
+    <span class="nx">innerHTML</span><span class="o">:</span> <span class="nx">template</span>
+  <span class="p">}]);</span>
+  <span class="p">...</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>I extract snippet code above and create a package here <a href="https://github.com/MQuy/html-webpack-condition-assets">https://github.com/MQuy/html-webpack-condition-assets</a></p>
+
+<p>This approach is not as good as the approach two in term of loading js assets, to improve that we can use the new feature <code>preload</code>. In the build process, we prepend js assets with format <code>&lt;link red=&quot;preload&quot; ...&gt;</code> via <a href="https://github.com/GoogleChrome/preload-webpack-plugin">preload-webpack-plugin</a></p>
+
+<p>Finally, the template will look like this:</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;preload&quot;</span> <span class="na">href=</span><span class="s">&quot;./vendor.js&quot;</span> <span class="na">as=</span><span class="s">&quot;script&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;preload&quot;</span> <span class="na">href=</span><span class="s">&quot;./app.js&quot;</span> <span class="na">as=</span><span class="s">&quot;script&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;main</span> <span class="na">id=</span><span class="s">&quot;root&quot;</span> <span class="na">style=</span><span class="s">&quot;height: 100%&quot;</span><span class="nt">&gt;&lt;/main&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+    <span class="nx">scripts</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;./vendor.js&#39;</span><span class="p">,</span><span class="s1">&#39;./app.js&#39;</span><span class="p">];</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="s2">&quot;fetch&quot;</span> <span class="k">in</span> <span class="nb">window</span> <span class="o">&amp;&amp;</span> <span class="s2">&quot;Promise&quot;</span><span class="p">))</span> <span class="p">{</span>
+      <span class="nx">scripts</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="s1">&#39;./polyfills.js&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">scripts</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">src</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">scriptEl</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
+      <span class="nx">scriptEl</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">src</span><span class="p">;</span>
+      <span class="nx">scriptEl</span><span class="p">.</span><span class="nx">async</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">scriptEl</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div>
+<h3 id="benchmark">Benchmark</h3>
+
+<p>After that, we use <a href="https://www.webpagetest.org/">https://www.webpagetest.org/</a> to benchmark our results. We save 0.3s for &quot;modern&quot; browser. More details you can check our benchmark</p>
+
+<ol>
+<li>Load sync</li>
+</ol>
+
+<p><a href="https://www.webpagetest.org/result/170504_HD_15BD/">https://www.webpagetest.org/result/170504_HD_15BD/</a>
+<a href="https://www.webpagetest.org/result/170504_QN_15EJ/">https://www.webpagetest.org/result/170504_QN_15EJ/</a>
+<a href="https://www.webpagetest.org/result/170504_KT_15HP/">https://www.webpagetest.org/result/170504_KT_15HP/</a></p>
+
+<ol>
+<li>Load condition async</li>
+</ol>
+
+<p><a href="https://www.webpagetest.org/result/170504_H3_15MN/">https://www.webpagetest.org/result/170504_H3_15MN/</a>
+<a href="https://www.webpagetest.org/result/170504_VR_15Q1/">https://www.webpagetest.org/result/170504_VR_15Q1/</a>
+<a href="https://www.webpagetest.org/result/170504_38_15VF/">https://www.webpagetest.org/result/170504_38_15VF/</a></p>
+
+        </section>
+
+        
+
+        <br/>
+        <br/>
+        <br/>
+        <footer class="post-footer">
+        	<!-- If we want to display author's name and bio -->
+            
+                <section class="author">
+                	<header> <a href=""> <img class="profile" src="/assets/images/profile.jpg" alt="Author's profile picture"></a></header>
+                	<article>
+                		<!-- Author Name -->
+                    	<h4> MQuy </h4>
+                    	<!-- Author Bio -->
+                    	<p>
+                    		Hey, I'm Ruby on Rails Developer, interest in stuffs like JS, C++
+                    	</p>
+                    </article>
+                </section>
+            
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=Smart Loading Assets For Production&amp;url=http://mquy.github.io//2017/05/12/webpack-optimization.html"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://mquy.github.io//2017/05/12/webpack-optimization.html"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://mquy.github.io//2017/05/12/webpack-optimization.html"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+            
+
+        </footer>
+
+    </article>
+
+</main>
+
+
+    <footer class="site-footer">
+        <a class="subscribe icon-feed" href="rss.xml"><span class="tooltip">Subscribe!</span></a>
+        <div class="inner">
+             <section class="copyright">All content copyright <a href="">Minh Quy Blog</a> &copy;  &bull; All rights reserved.</section>
+             <section class="poweredby">Made with Jekyll using <a href="http://github.com/rosario/kasper">Kasper theme</a></section>
+        </div>
+    </footer>
+
+
+    <script type="text/javascript" src="/assets/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Google Analytics Tracking code -->
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+</body>
+</html>

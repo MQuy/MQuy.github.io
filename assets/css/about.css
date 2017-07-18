@@ -133,6 +133,11 @@ p {
           -o-border-radius: 4px;
           -ms-border-radius: 4px;
           border-radius: 4px; }
+          .column-two .item-view .content .process .percentage span {
+            font-size: 12px;
+            color: white;
+            margin: 0 12px;
+            display: none; }
     .column-two .item-view a {
       color: #E85446; }
 

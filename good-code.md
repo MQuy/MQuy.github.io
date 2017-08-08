@@ -3,7 +3,7 @@ To start with, I want share with you, guys about my slide which was prepared for
 ### Good code
 
 what is the good code? In my perspective, the good code has to have four conditions:
-+ Need to work (It is obvious, right? what kind of good code, if noone can use it)
++ Need to work (It is mandatory, right? what kind of good code, if noone can use it)
 + Easy to understand (not just only for the one who wrote that code but also for other developers who are involved). Normally, to achieve it, there are some principles like:
   + Follow convention
   + Meaningful name

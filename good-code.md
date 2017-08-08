@@ -31,8 +31,8 @@ The sign up flow on website contains:
 
 We are all Ruby on Rails Developer, therefore, I will go straight into the problem.
 
-1. The first thing, I want to talk is about architecture. Architecture is not based on tools and frameworks. It means that it does not depend on the delivery mechanism (for example rails).
-There is no clearly boundaries, just controllers, models ... Use cases should be primary abstractions and central organizing of the system. It means when you look at a system you should see the intent of a system.
+1. The first thing, I want to talk is about architecture. Good architecture is not based on tools and frameworks. It means that it does not depend on the delivery mechanism (for example rails).
+As you can see, there is no clearly boundaries, just controllers, models ... Use cases should be primary abstractions and central organizing of the system. It means when you look at a system you should see the intent of a system.
 
 2. In user controller, we have create, show and update action.
 Each action is usually a separate responsibilitiy. The coupling of multiple actions will bring more troubles than benefits.

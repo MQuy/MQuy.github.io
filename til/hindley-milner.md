@@ -80,6 +80,7 @@ inferLambda env x e = do
   env1 = extendEnv env (x, sigma)
   (s, tau1) <- infer env1 e
   return (s, TFun (applySubst s tau) tau1)
+```
 
 #### `inferApp`
 ```haskell

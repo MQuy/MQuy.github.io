@@ -4,4 +4,4 @@
 
 ### Software Entropy
 + Don't leave "broken windows" unrepaired. (If you cannot fix it properly due to deadline, ... then at least commetting reasons for example TODO)
-+ When involving into projects with "broken windowns", don't slip into mindset "All the rest of this code is crap, I will just follow suit." Following boy scout rule
++ When involving into projects with "broken windows", don't slip into mindset "All the rest of this code is crap, I will just follow suit." Following boy scout rule

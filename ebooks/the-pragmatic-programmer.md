@@ -13,3 +13,16 @@
 ### Good enough software
 + The scope and quality of the system you produce should be specifid as part of that system's requirement.
 + Deliver small and quick to get users' feedback.
+
+### Your knowledge protfolio
+Invest regularily via setting your goals:
++ Learn  at least one new language every year.
++ Read a technical book each quartar.
++ Read nontechnical books because you also need to communicate with others.
++ Take classes, participate in local user groups, experiment with different environments.
+
+Making these things above become your habits.
+
+Admit when you don't know and find an answer via guru, internet, sending email, ....
+
+Plan ahead what you will read and learn, also analyzing what you read and hear. Answers may or may not be applicable to you despite they are answered by popular people, top searching, ...

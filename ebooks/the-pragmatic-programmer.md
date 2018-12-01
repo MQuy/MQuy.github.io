@@ -42,9 +42,22 @@ Write an outline, jot down the ideas you want to communicate and plan a couple o
 ### The evils of duplication
 Every piece of knowledge should have a single representation within a system.
 
-There are several cases which duplication might rise
+In order to prevent duplication, we need to know what/where, there are 4 kinds of duplication
 
 #### Imposed duplication
-It mostly comes from project standards, multiple target platforms(client-server, languages). We cannot avoid but we can make it less worse via code generator.
+It mostly comes from project standards, multiple target platforms(client-server, languages). We cannot avoid but we can make it less worse for example code generator.
 
 Remember documentation is also an knowledge, therefore, keeping it as high-level explainations as you can.
+
+#### Inadvertent duplication
+Developer don't realize they are duplicating information due to the misunderstand/mistake in the design/requirement.
+
+#### Impatient duplication
+It might be from developer lazyness or time pressures that can drive us to take shortcurts for example, copy function/class and make few changes.
+
+Remember "shortcuts make for long delays"
+
+#### Interdeveloper duplication
+It happens due to many people on a team, different teams, ... The best way to encourage active and frequent communication between developers (setup channel/room to discuss common problems). At the high level, it needs a clear design, however, at the module level, commonly needed functionality or data should be located in obvious/shared areas.
+
+### Orthogonality

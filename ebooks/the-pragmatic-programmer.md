@@ -60,7 +60,7 @@ Remember "shortcuts make for long delays"
 #### Interdeveloper duplication
 It happens due to many people on a team, different teams, ... The best way to encourage active and frequent communication between developers (setup channel/room to discuss common problems). At the high level, it needs a clear design, however, at the module level, commonly needed functionality or data should be located in obvious/shared areas.
 
-#### Orthogonality
+### Orthogonality
 
 Two or more things are orthogonal if changes in one do not affect any of the others. Orthogonality can apply to
 + Project teams: it depends on many factors (how many people, budges) but in general, you can organize by infrastructure, business features, ...
@@ -68,8 +68,10 @@ Two or more things are orthogonal if changes in one do not affect any of the oth
 + Coding: keep your code decoupled and avoid global data, similar functions.
 + Testing: to know your system is orthogonal -> writing unit tests. If it involves other components, your system is not.
 
-#### Reversibility
+### Reversibility
 Everything can be changed, therefore, keeping your decisions soft and pliable. For example, you can hide a third-party product/service behind a well-defined abstract interface.
 
 Remember that there is always more than one way to implement something and also more than one vendor available to provide a third-party product.
 
+### Tracer bullets
+Tracer code is lean but complete (end-to-end flow not fully functional) and forms part of the skeleton of the final system. For example, creating a structure to allow developers to work in.

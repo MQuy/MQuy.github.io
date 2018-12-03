@@ -75,3 +75,9 @@ Remember that there is always more than one way to implement something and also 
 
 ### Tracer bullets
 Tracer code is lean but complete (end-to-end flow not fully functional) and forms part of the skeleton of the final system. For example, creating a structure to allow developers to work in.
+
+### Prototypes and post-it notes
+One important thing when doing prototypes is that you have to set the right expections for your project sponsors or management. It is disposable, incomplete and might be unable to completed solution.
+
+### Domain languages
+Coding at a high level of abstraction, you are free to concentrate on solving domain problems instead of implementation details.
